@@ -1,3 +1,3 @@
 function showAlert(attr) {
-    alert("test1 " + attr + " !!!!!!!!");
+    alert("model attribute " + attr + " passed");
 }
