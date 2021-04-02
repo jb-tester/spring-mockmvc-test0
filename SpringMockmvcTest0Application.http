@@ -2,5 +2,9 @@
 
 
 
-###
 
+###
+GET http://localhost:8080/controller1/test3
+
+###
+GET http://localhost:8080/controller1/test3?param1=bar

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -31,8 +32,8 @@ public class MyController1 {
         return "test2";
     }
 
-    @RequestMapping("/test3")
-    public String test3(ModelMap model, @RequestParam("param1") String p1) {
+    @RequestMapping(path = "/test3", method = RequestMethod.GET, produces = {"text/plain", "application/*"})
+    public String test3(ModelMap model, @RequestParam(name = "param1",required = false,defaultValue = "def_p1") String p1) {
         model.addAttribute("test3_attr1", "test3");
         model.addAttribute("req_param1", p1);
         return "test3";
