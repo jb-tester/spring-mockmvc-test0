@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -15,12 +15,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 class SpringMockmvcTest0ApplicationTests {
 
+    public static final String TEST1 = "/controller1/test1";
     @Autowired
     private MockMvc mockMvc;
 
     @Test
     public void test1() throws Exception {
-        this.mockMvc.perform(get("/controller1/test1")).andDo(print()).andExpect(status().isOk())
+        this.mockMvc.perform(MockMvcRequestBuilders
+                        .get(TEST1)).andDo(print()).andExpect(status().isOk())
                 .andExpect(view().name("test1"))
                  .andExpect(model().attribute("test1_attr1", "test1"));
     }
