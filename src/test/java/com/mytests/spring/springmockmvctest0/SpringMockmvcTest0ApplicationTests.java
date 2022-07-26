@@ -46,5 +46,9 @@ class SpringMockmvcTest0ApplicationTests {
                 .andExpect(model().attribute("req_param1", "foo"))
                 .andExpect(model().attribute("test3_attr1", "test3"));
     }
-    
+
+    @Test
+    void test4() throws Exception {
+        this.mockMvc.perform(get("/controller1/test4")).andExpect(view().name("test4")).andExpect(model().attributeExists("attr1"));
+    }
 }
